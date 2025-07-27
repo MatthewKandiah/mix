@@ -1,0 +1,26 @@
+X       EQU   1000
+        ORIG  3000
+PROG    ENTA  7
+        STA   X
+        ENTA  22
+        STA   X+1
+        ENTA  3
+        STA   X+2
+
+MAX     EQU   0
+        ENT1  3
+        JMP   MAXIMUM
+        STA   MAX
+
+MAXIMUM STJ   EXIT
+INIT    ENT3  0,1
+        JMP   CHANGEM
+LOOP    CMPA  X,3
+        JGE   *+3
+CHANGEM ENT2  0,2
+        LDA   X,3
+        DEC3  1
+        J3P   LOOP
+EXIT    JMP   *
+
+        END   PROG
