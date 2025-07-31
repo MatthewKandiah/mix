@@ -1,23 +1,24 @@
 format ELF64 executable 3
 
+macro print ptr,len {
+	mov rax, 1
+	mov rdi, 1
+	mov rsi, ptr
+	mov rdx, len
+	syscall
+}
+
 segment readable executable
 
 main:
-
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, hello
-	mov rdx, hello_size
-	syscall
+  print hello, hello_size
 
 	mov r9, numbers_count
   call maximum
 
-  mov rax, 1
-  mov rdi, 1
-  mov rsi, bye
-  mov rdx, bye_size
-  syscall
+  print bye, bye_size
+
+  ;;int3 ;; useful for debugging
 
   mov rax, 60
   mov rdi, 0
